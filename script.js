@@ -1126,3 +1126,219 @@ function openHackathonModal(id) {
         if (e.target === modal) modal.style.display = 'none';
     };
 }
+
+
+// --- Hackathon Simulator Page Logic ---
+
+const problemData = [
+    {
+        id: 1,
+        title: 'Sustainable Smart City Dashboard',
+        difficulty: 'Intermediate',
+        category: 'sustainability',
+        source: 'GreenTech Hackathon 2024',
+        desc: 'Design a dashboard that aggregates data from IoT sensors to monitor energy consumption, waste management, and traffic flow in a smart city.',
+        deliverables: ['Web Dashboard UI', 'Data Visualization Charts', 'Mock API Integration'],
+        criteria: 'UX Design, Data Clarity, Feasibility',
+        resources: ['Chart.js Documentation', 'Open City Data API']
+    },
+    {
+        id: 2,
+        title: 'AI-Powered Personal Finance Advisor',
+        difficulty: 'Advanced',
+        category: 'fintech',
+        source: 'FinHacks Global',
+        desc: 'Create an AI chatbot that analyzes user spending habits and suggests personalized budget adjustments and investment strategies.',
+        deliverables: ['Chatbot Interface', 'Spending Analysis Algorithm', 'Security Features'],
+        criteria: 'AI Accuracy, Security, User Engagement',
+        resources: ['OpenAI API', 'Plaid API']
+    },
+    {
+        id: 3,
+        title: 'Gamified Learning Platform for Kids',
+        difficulty: 'Beginner',
+        category: 'education',
+        source: 'EduCode Sprint',
+        desc: 'Build a web app that uses gamification (badges, leaderboards) to teach basic math or coding concepts to children aged 6-10.',
+        deliverables: ['Interactive Lessons', 'Reward System', 'Child-Friendly UI'],
+        criteria: 'Fun Factor, Educational Value, Accessibility',
+        resources: ['Phaser.js', 'Google Fonts for Kids']
+    },
+    {
+        id: 4,
+        title: 'Telemedicine Appointment Scheduler',
+        difficulty: 'Intermediate',
+        category: 'health',
+        source: 'MedTech Challenge',
+        desc: 'Develop a secure platform for patients to book virtual appointments with doctors, including video call integration features.',
+        deliverables: ['Booking System', 'Doctor Dashboard', 'Video Call Placeholder'],
+        criteria: 'Privacy, Ease of Use, Reliability',
+        resources: ['WebRTC', 'FullCalendar']
+    }
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+    const problemGrid = document.getElementById('problem-grid');
+    const startSimBtn = document.getElementById('start-sim-btn');
+    const quitSimBtn = document.getElementById('quit-sim-btn');
+    const submitSimBtn = document.getElementById('submit-sim-btn');
+    const retrySimBtn = document.getElementById('retry-sim-btn');
+
+    // Render Problem Library
+    if (problemGrid) {
+        renderProblems(problemData);
+
+        // Filters
+        const searchInput = document.getElementById('problem-search');
+        const filterDiff = document.getElementById('filter-difficulty');
+        const filterCat = document.getElementById('filter-category');
+
+        const filterProblems = () => {
+            const term = searchInput.value.toLowerCase();
+            const diff = filterDiff.value.toLowerCase();
+            const cat = filterCat.value.toLowerCase();
+
+            const filtered = problemData.filter(p => {
+                const matchesSearch = p.title.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term);
+                const matchesDiff = diff === 'all' || p.difficulty.toLowerCase() === diff;
+                const matchesCat = cat === 'all' || p.category.toLowerCase() === cat;
+                return matchesSearch && matchesDiff && matchesCat;
+            });
+            renderProblems(filtered);
+        };
+
+        searchInput.addEventListener('input', filterProblems);
+        filterDiff.addEventListener('change', filterProblems);
+        filterCat.addEventListener('change', filterProblems);
+    }
+
+    // Simulator Logic
+    if (startSimBtn) {
+        startSimBtn.addEventListener('click', startSimulation);
+        quitSimBtn.addEventListener('click', quitSimulation);
+        submitSimBtn.addEventListener('click', finishSimulation);
+        retrySimBtn.addEventListener('click', resetSimulation);
+    }
+});
+
+function renderProblems(data) {
+    const grid = document.getElementById('problem-grid');
+    if (!grid) return;
+
+    grid.innerHTML = data.map(p => `
+        <div class="problem-card fade-in-up visible">
+            <div class="problem-header">
+                <span class="problem-difficulty difficulty-${p.difficulty.toLowerCase()}">${p.difficulty}</span>
+                <button class="btn btn-sm btn-outline-primary" onclick="openProblemModal(${p.id})"><i class="fas fa-expand"></i></button>
+            </div>
+            <h3 class="problem-title">${p.title}</h3>
+            <p class="problem-source"><i class="fas fa-trophy"></i> ${p.source}</p>
+            <div class="problem-tags">
+                <span class="tag">${p.category}</span>
+            </div>
+            <button class="btn btn-primary btn-sm btn-block" onclick="openProblemModal(${p.id})">View Problem</button>
+        </div>
+    `).join('');
+}
+
+function openProblemModal(id) {
+    const problem = problemData.find(p => p.id === id);
+    if (!problem) return;
+
+    document.getElementById('modal-problem-title').innerText = problem.title;
+    document.getElementById('modal-problem-difficulty').innerText = problem.difficulty;
+    document.getElementById('modal-problem-desc').innerText = problem.desc;
+    document.getElementById('modal-problem-deliverables').innerHTML = problem.deliverables.map(d => `<li>${d}</li>`).join('');
+    document.getElementById('modal-problem-criteria').innerText = problem.criteria;
+    document.getElementById('modal-problem-resources').innerHTML = problem.resources.map(r => `<li>${r}</li>`).join('');
+
+    document.getElementById('problem-modal').style.display = 'block';
+
+    // Close logic
+    const modal = document.getElementById('problem-modal');
+    const closeBtn = modal.querySelector('.close-modal');
+    closeBtn.onclick = () => modal.style.display = 'none';
+    window.onclick = (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    };
+}
+
+// Simulator State
+let simTimerInterval;
+let simTimeLeft = 3600; // 60 minutes
+
+function startSimulation() {
+    // Pick random problem
+    const randomProblem = problemData[Math.floor(Math.random() * problemData.length)];
+
+    document.getElementById('sim-problem-title').innerText = randomProblem.title;
+    document.getElementById('sim-problem-desc').innerText = randomProblem.desc;
+    document.getElementById('sim-problem-tags').innerHTML = `<span class="tag">${randomProblem.category}</span> <span class="tag">${randomProblem.difficulty}</span>`;
+
+    // Switch Views
+    document.getElementById('simulator-start-view').classList.remove('active');
+    document.getElementById('simulator-active-view').classList.add('active');
+
+    // Start Timer
+    simTimeLeft = 3600;
+    updateTimerDisplay();
+    simTimerInterval = setInterval(() => {
+        simTimeLeft--;
+        updateTimerDisplay();
+        if (simTimeLeft <= 0) finishSimulation();
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(simTimeLeft / 60);
+    const seconds = simTimeLeft % 60;
+    document.getElementById('sim-timer').innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function quitSimulation() {
+    clearInterval(simTimerInterval);
+    if (confirm("Are you sure you want to quit? Progress will be lost.")) {
+        resetSimulation();
+    } else {
+        // Resume timer if needed, or just leave it running in background logic (simplified here)
+        simTimerInterval = setInterval(() => {
+            simTimeLeft--;
+            updateTimerDisplay();
+            if (simTimeLeft <= 0) finishSimulation();
+        }, 1000);
+    }
+}
+
+function finishSimulation() {
+    clearInterval(simTimerInterval);
+
+    // Calculate Score (Mock AI)
+    const score = Math.floor(Math.random() * (95 - 70 + 1)) + 70; // Random score between 70-95
+
+    document.getElementById('sim-score').innerText = score;
+
+    // Mock Feedback
+    const strengths = ["Clear problem understanding", "Feasible tech stack choice", "Good focus on user needs"];
+    const improvements = ["Consider scalability", "Add more security features", "Refine the revenue model"];
+
+    document.getElementById('sim-feedback-strengths').innerHTML = strengths.map(s => `• ${s}<br>`).join('');
+    document.getElementById('sim-feedback-improvements').innerHTML = improvements.map(i => `• ${i}<br>`).join('');
+
+    // Update Gamification (Mock)
+    let streak = parseInt(document.getElementById('streak-count').innerText) || 0;
+    let xp = parseInt(document.getElementById('xp-count').innerText) || 0;
+    document.getElementById('streak-count').innerText = streak + 1;
+    document.getElementById('xp-count').innerText = xp + 150;
+
+    // Switch Views
+    document.getElementById('simulator-active-view').classList.remove('active');
+    document.getElementById('simulator-result-view').classList.add('active');
+}
+
+function resetSimulation() {
+    clearInterval(simTimerInterval);
+    document.getElementById('sim-solution').value = '';
+    document.getElementById('simulator-result-view').classList.remove('active');
+    document.getElementById('simulator-active-view').classList.remove('active');
+    document.getElementById('simulator-start-view').classList.add('active');
+}

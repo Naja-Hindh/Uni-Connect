@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Simulator | Uni-Connect</title>
+    <meta name="description"
+        content="Practice with past problem statements, run mock hackathon simulations, and get AI feedback to improve your skills.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.jpg" alt="Uni-Connect Logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="project-tools.html" class="nav-link">Tools</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="connections.html" class="nav-link">Connect</a>
+                <a href="hackathon-hub.html" class="nav-link">Hackathons</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="login.html" class="btn btn-primary nav-cta">Join Now</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="project-tools.html" class="mobile-nav-link">Tools</a>
+        <a href="skills.html" class="mobile-nav-link">Skills</a>
+        <a href="connections.html" class="mobile-nav-link">Connect</a>
+        <a href="hackathon-hub.html" class="mobile-nav-link">Hackathons</a>
+        <button id="mobile-theme-toggle" class="mobile-theme-toggle">
+            <i class="fas fa-moon"></i> Dark Mode
+        </button>
+        <a href="login.html" class="btn btn-primary mobile-cta">Join Now</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero simulator-hero">
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <h1 class="hero-title">Level Up Your <span class="highlight">Hackathon Skills</span></h1>
+                <p class="hero-subtitle">Learn, test, and improve without waiting for events. Practice with real problem
+                    statements and get instant AI feedback.</p>
+                <div class="hero-buttons">
+                    <a href="#simulator-section" class="btn btn-primary"><i class="fas fa-play"></i> Try Simulator</a>
+                    <a href="#problem-library" class="btn btn-secondary">Browse Problems</a>
+                </div>
+            </div>
+            <div class="hero-stats fade-in-up">
+                <div class="stat-item">
+                    <i class="fas fa-fire"></i>
+                    <span id="streak-count">0</span>
+                    <p>Day Streak</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-star"></i>
+                    <span id="xp-count">0</span>
+                    <p>XP Earned</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Library Section -->
+    <section id="problem-library" class="library-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Problem Statement Library</h2>
+                <p class="section-subtitle">Explore challenges from past hackathons and top tech companies.</p>
+            </div>
+
+            <div class="filters-container fade-in-up">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="problem-search" placeholder="Search problems (e.g., Fintech, Health...)">
+                </div>
+                <div class="filter-group">
+                    <select id="filter-difficulty">
+                        <option value="all">All Difficulties</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                    <select id="filter-category">
+                        <option value="all">All Categories</option>
+                        <option value="ai">AI/ML</option>
+                        <option value="fintech">Fintech</option>
+                        <option value="health">Healthcare</option>
+                        <option value="education">Education</option>
+                        <option value="sustainability">Sustainability</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="problem-grid" class="problem-grid">
+                <!-- Problem cards injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulator Section -->
+    <section id="simulator-section" class="simulator-section">
+        <div class="container">
+            <div class="simulator-panel fade-in-up">
+                <div class="simulator-header">
+                    <h2><i class="fas fa-laptop-code"></i> Hackathon Simulator</h2>
+                    <p>Ready to test your skills under pressure?</p>
+                </div>
+
+                <div id="simulator-start-view" class="simulator-view active">
+                    <div class="simulator-intro">
+                        <div class="intro-step">
+                            <div class="step-icon"><i class="fas fa-random"></i></div>
+                            <h3>Get a Random Problem</h3>
+                            <p>We'll assign you a realistic problem statement based on your skill level.</p>
+                        </div>
+                        <div class="intro-step">
+                            <div class="step-icon"><i class="fas fa-hourglass-half"></i></div>
+                            <h3>Race the Clock</h3>
+                            <p>You have 60 minutes to brainstorm and outline your solution.</p>
+                        </div>
+                        <div class="intro-step">
+                            <div class="step-icon"><i class="fas fa-robot"></i></div>
+                            <h3>Get AI Feedback</h3>
+                            <p>Submit your idea and get an instant score and improvement tips.</p>
+                        </div>
+                    </div>
+                    <button id="start-sim-btn" class="btn btn-primary btn-lg">Start Simulation</button>
+                </div>
+
+                <div id="simulator-active-view" class="simulator-view">
+                    <div class="sim-top-bar">
+                        <div class="timer-display">
+                            <i class="fas fa-clock"></i> <span id="sim-timer">60:00</span>
+                        </div>
+                        <button id="quit-sim-btn" class="btn btn-sm btn-outline-danger">Quit</button>
+                    </div>
+
+                    <div class="sim-problem-box">
+                        <h3 id="sim-problem-title">Loading Problem...</h3>
+                        <p id="sim-problem-desc">...</p>
+                        <div class="sim-tags" id="sim-problem-tags"></div>
+                    </div>
+
+                    <div class="sim-workspace">
+                        <label for="sim-solution">Your Solution / Pitch:</label>
+                        <textarea id="sim-solution"
+                            placeholder="Describe your approach, tech stack, and key features here..."></textarea>
+                        <button id="submit-sim-btn" class="btn btn-success btn-lg">Submit Solution</button>
+                    </div>
+                </div>
+
+                <div id="simulator-result-view" class="simulator-view">
+                    <div class="result-header">
+                        <h3>Simulation Complete!</h3>
+                        <div class="score-circle">
+                            <span id="sim-score">0</span>
+                            <small>/ 100</small>
+                        </div>
+                    </div>
+
+                    <div class="feedback-grid">
+                        <div class="feedback-card">
+                            <h4><i class="fas fa-thumbs-up"></i> Strengths</h4>
+                            <p id="sim-feedback-strengths">Analyzing...</p>
+                        </div>
+                        <div class="feedback-card">
+                            <h4><i class="fas fa-wrench"></i> Improvements</h4>
+                            <p id="sim-feedback-improvements">Analyzing...</p>
+                        </div>
+                    </div>
+
+                    <div class="result-actions">
+                        <button id="retry-sim-btn" class="btn btn-primary">Try Another Simulation</button>
+                        <button class="btn btn-secondary">Find Teammates</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-cta fade-in-up">
+                <h2>Every win begins with practice.</h2>
+                <p>Start solving today and be ready for your next hackathon.</p>
+                <div class="footer-buttons">
+                    <a href="#problem-library" class="btn btn-light">Browse Problems</a>
+                    <a href="#simulator-section" class="btn btn-outline-light">Start Simulator</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Uni-Connect. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Problem Details Modal -->
+    <div id="problem-modal" class="modal">
+        <div class="modal-content problem-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2 id="modal-problem-title">Problem Title</h2>
+                <span id="modal-problem-difficulty" class="badge">Difficulty</span>
+            </div>
+            <div class="modal-body">
+                <p id="modal-problem-desc" class="modal-desc">Description...</p>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-list-check"></i> Deliverables</h3>
+                    <ul id="modal-problem-deliverables"></ul>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-gavel"></i> Judging Criteria</h3>
+                    <p id="modal-problem-criteria"></p>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-link"></i> Resources</h3>
+                    <ul id="modal-problem-resources"></ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary"
+                    onclick="document.getElementById('problem-modal').style.display='none'; window.location.href='#simulator-section'">Solve
+                    in Simulator</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
