@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Building Tools | Uni-Connect</title>
+    <meta name="description"
+        content="Curated tools, tutorials, and resources to help students build hackathon projects faster.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.jpg" alt="Uni-Connect Logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="#" class="nav-link active">Tools</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="login.html" class="btn btn-primary nav-cta">Join Now</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="index.html#features" class="mobile-nav-link">Features</a>
+        <a href="#" class="mobile-nav-link active">Tools</a>
+        <a href="index.html#about" class="mobile-nav-link">About</a>
+        <button id="mobile-theme-toggle" class="mobile-theme-toggle">
+            <i class="fas fa-moon"></i> Dark Mode
+        </button>
+        <a href="login.html" class="btn btn-primary mobile-cta">Join Now</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero tools-hero">
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <h1 class="hero-title">Build Faster. <span class="highlight">Launch Sooner.</span> Win Big.</h1>
+                <p class="hero-subtitle">The ultimate toolkit for student developers to crush their next hackathon.</p>
+                <div class="hero-buttons">
+                    <a href="#tools-grid" class="btn btn-primary">Start Building</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="value-prop">
+        <div class="container">
+            <div class="value-content fade-in-up">
+                <p>Stop wasting time searching for the right tech stack. We've curated the best free and
+                    student-friendly tools for <strong>hosting, UI design, APIs, databases, and AI/ML</strong>. Whether
+                    you're building your first web app or deploying a complex machine learning model, access direct
+                    links, honest student reviews, and step-by-step tutorials to get you from idea to prototype in
+                    record time.</p>
+                <p class="value-cta"><strong>Don't just code—build something amazing.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Grid -->
+    <section id="tools-grid" class="tools-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Explore Categories</h2>
+                <p class="section-subtitle">Everything you need for your tech stack.</p>
+            </div>
+
+            <div class="features-grid">
+                <!-- UI/UX Design -->
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3 class="feature-title">UI/UX Design</h3>
+                    <p class="feature-desc">Prototyping tools, icon sets, and design systems to make your project look
+                        professional.</p>
+                    <a href="#" class="btn-link">Explore Tools &rarr;</a>
+                </div>
+
+                <!-- Frontend Frameworks -->
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="feature-title">Frontend</h3>
+                    <p class="feature-desc">React, Vue, Svelte, and component libraries for building interactive
+                        interfaces.</p>
+                    <a href="#" class="btn-link">Explore Tools &rarr;</a>
+                </div>
+
+                <!-- Backend & APIs -->
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="feature-title">Backend & APIs</h3>
+                    <p class="feature-desc">Serverless functions, REST APIs, and authentication services for your logic.
+                    </p>
+                    <a href="#" class="btn-link">Explore Tools &rarr;</a>
+                </div>
+
+                <!-- Databases -->
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="feature-title">Databases</h3>
+                    <p class="feature-desc">SQL, NoSQL, and real-time databases with generous free tiers for students.
+                    </p>
+                    <a href="#" class="btn-link">Explore Tools &rarr;</a>
+                </div>
+
+                <!-- AI & ML -->
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">AI & Machine Learning</h3>
+                    <p class="feature-desc">Pre-trained models, NLP APIs, and computer vision tools to add intelligence.
+                    </p>
+                    <a href="#" class="btn-link">Explore Tools &rarr;</a>
+                </div>
+
+                <!-- Deployment -->
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="feature-title">Hosting & Deployment</h3>
+                    <p class="feature-desc">Get your project live in minutes with Vercel, Netlify, Heroku, and more.</p>
+                    <a href="#" class="btn-link">Explore Tools &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Paths -->
+    <section class="learning-paths">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Your Learning Path</h2>
+                <p class="section-subtitle">Level up your skills, one step at a time.</p>
+            </div>
+
+            <div class="timeline fade-in-up">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Beginner</h3>
+                        <p>HTML/CSS, Basic JS, Git</p>
+                        <span class="timeline-badge">Start Here</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Intermediate</h3>
+                        <p>React/Vue, APIs, Firebase</p>
+                        <span class="timeline-badge">Build Apps</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Advanced</h3>
+                        <p>Full Stack, AI Integration, CI/CD</p>
+                        <span class="timeline-badge">Mastery</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Student Success Stories</h2>
+                <p class="section-subtitle">See how others built winning projects.</p>
+            </div>
+
+            <div class="testimonial-slider fade-in-up">
+                <div class="testimonial-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The curated API list saved us hours. We found a perfect weather API
+                            for our climate app instantly!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Student">
+                            <div>
+                                <h4>Jessica M.</h4>
+                                <span>HackNY Winner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I didn't know where to start with AI. The beginner path guided me
+                            to use a simple NLP API that wowed the judges."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student">
+                            <div>
+                                <h4>David K.</h4>
+                                <span>First-time Hacker</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Deployment used to be a nightmare. The tutorials here made it so
+                            easy to get our site live on Vercel."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Student">
+                            <div>
+                                <h4>Sarah L.</h4>
+                                <span>Frontend Dev</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-cta fade-in-up">
+                <h2>Your next project is waiting.</h2>
+                <p>Start building now and turn your ideas into reality.</p>
+                <div class="footer-buttons">
+                    <a href="#tools-grid" class="btn btn-light">Explore Tools</a>
+                    <a href="login.html" class="btn btn-secondary-light">Join Uni-Connect</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Uni-Connect. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

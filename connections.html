@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect with Students | Uni-Connect</title>
+    <meta name="description" content="Find teammates, mentors, and collaborators across universities.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.jpg" alt="Uni-Connect Logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="#" class="nav-link active">Connect</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="login.html" class="btn btn-primary nav-cta">Join Now</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="index.html#features" class="mobile-nav-link">Features</a>
+        <a href="#" class="mobile-nav-link active">Connect</a>
+        <a href="index.html#about" class="mobile-nav-link">About</a>
+        <button id="mobile-theme-toggle" class="mobile-theme-toggle">
+            <i class="fas fa-moon"></i> Dark Mode
+        </button>
+        <a href="login.html" class="btn btn-primary mobile-cta">Join Now</a>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title fade-in-up">Connect with Students</h1>
+            <p class="page-subtitle fade-in-up">Discover relevant teammates, mentors, and collaborators based on skills
+                and experience.</p>
+
+            <!-- Mentor Tracker -->
+            <div class="mentor-tracker fade-in-up">
+                <div class="tracker-header">
+                    <h3>Mentor Path Progress</h3>
+                    <span class="tracker-status">Level 4 Student</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 65%;"></div>
+                </div>
+                <p class="tracker-details">Unlock Mentor Status: Reach Level 6 + 4 Hackathons + 3 Positive Feedbacks</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="connections-content">
+        <div class="container connections-grid-layout">
+
+            <!-- Sidebar / Leaderboard -->
+            <aside class="sidebar fade-in-up">
+                <div class="leaderboard-widget">
+                    <h3>🏆 Top Students</h3>
+                    <ul class="leaderboard-list" id="leaderboard-list">
+                        <!-- Leaderboard items will be injected here -->
+                    </ul>
+                    <a href="#" class="btn-link">View Full Leaderboard</a>
+                </div>
+            </aside>
+
+            <!-- Main Grid Area -->
+            <div class="main-area">
+
+                <!-- Search & Filters -->
+                <div class="filter-bar fade-in-up">
+                    <div class="search-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="student-search" placeholder="Search by name, skill, or campus...">
+                    </div>
+                    <div class="filter-group">
+                        <select id="filter-sort">
+                            <option value="default">Sort By</option>
+                            <option value="rank">Top Ranked</option>
+                            <option value="rating">Best Rated</option>
+                            <option value="xp">Most XP</option>
+                        </select>
+                        <select id="filter-status">
+                            <option value="all">Status</option>
+                            <option value="open">Open to Collab</option>
+                            <option value="mentor">Mentors</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Student Grid -->
+                <div class="student-grid" id="student-grid">
+                    <!-- Student cards will be injected here -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-cta fade-in-up">
+                <h2>Ready to team up?</h2>
+                <p>Find your perfect hackathon partner today.</p>
+                <a href="login.html" class="btn btn-light">Get Started</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Uni-Connect. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body">
+                <!-- Modal content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
