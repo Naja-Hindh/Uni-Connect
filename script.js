@@ -492,3 +492,229 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle Resize
     window.addEventListener('resize', updateSlidePosition);
 });
+
+// --- Mentorship Page Logic ---
+
+const mentors = [
+    {
+        id: 1,
+        name: 'Dr. Sarah Miller',
+        role: 'Senior Data Scientist',
+        company: 'Google',
+        avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+        specialization: 'ai',
+        tags: ['Machine Learning', 'Python', 'TensorFlow'],
+        exp: 8,
+        guided: 45,
+        rating: 4.9,
+        badges: ['Top Mentor', 'AI Expert'],
+        about: 'Ph.D. in Computer Science with 8 years of industry experience. Passionate about helping students break into AI/ML.',
+        history: ['Google (Current)', 'OpenAI (Researcher)', 'Stanford (PhD)'],
+        resources: ['Intro to ML (Course)', 'Neural Networks 101 (Article)'],
+        slots: ['Mon 10am', 'Wed 2pm', 'Fri 4pm']
+    },
+    {
+        id: 2,
+        name: 'James Carter',
+        role: 'Product Manager',
+        company: 'Airbnb',
+        avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+        specialization: 'product',
+        tags: ['Product Strategy', 'UX Research', 'Agile'],
+        exp: 6,
+        guided: 30,
+        rating: 4.8,
+        badges: ['Strategy Guru'],
+        about: 'Helping engineers think like product managers. I can help you validate your hackathon idea and build a winning pitch.',
+        history: ['Airbnb (PM)', 'Uber (APM)'],
+        resources: ['Product Market Fit (Guide)', 'Pitch Perfect (Video)'],
+        slots: ['Tue 11am', 'Thu 3pm']
+    },
+    {
+        id: 3,
+        name: 'Emily Chen',
+        role: 'Frontend Lead',
+        company: 'Netflix',
+        avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
+        specialization: 'frontend',
+        tags: ['React', 'Performance', 'Design Systems'],
+        exp: 7,
+        guided: 50,
+        rating: 5.0,
+        badges: ['UI Wizard', 'Code Reviewer'],
+        about: 'Frontend architecture enthusiast. I love clean code and pixel-perfect UIs. Let\'s optimize your React app.',
+        history: ['Netflix (Senior Dev)', 'Meta (UI Eng)'],
+        resources: ['Advanced React Patterns (Repo)', 'CSS for JS Devs (Blog)'],
+        slots: ['Mon 5pm', 'Wed 5pm']
+    },
+    {
+        id: 4,
+        name: 'Michael Ross',
+        role: 'Backend Engineer',
+        company: 'Amazon',
+        avatar: 'https://randomuser.me/api/portraits/men/85.jpg',
+        specialization: 'backend',
+        tags: ['Java', 'AWS', 'System Design'],
+        exp: 5,
+        guided: 25,
+        rating: 4.7,
+        badges: ['Cloud Architect'],
+        about: 'Scalability is my middle name. I can help you design robust backends and deploy to the cloud.',
+        history: ['Amazon (SDE II)', 'Oracle (Dev)'],
+        resources: ['System Design Primer (Notes)'],
+        slots: ['Tue 9am', 'Thu 9am']
+    },
+    {
+        id: 5,
+        name: 'Jessica Lee',
+        role: 'UX Designer',
+        company: 'Spotify',
+        avatar: 'https://randomuser.me/api/portraits/women/22.jpg',
+        specialization: 'design',
+        tags: ['Figma', 'Prototyping', 'User Testing'],
+        exp: 4,
+        guided: 20,
+        rating: 4.8,
+        badges: ['Design Thinker'],
+        about: 'Creating experiences that users love. I can give feedback on your UI and help you run user tests.',
+        history: ['Spotify (Product Designer)', 'IDEO (Intern)'],
+        resources: ['Figma 101 (Workshop)'],
+        slots: ['Fri 1pm', 'Fri 3pm']
+    },
+    {
+        id: 6,
+        name: 'David Kim',
+        role: 'Full Stack Dev',
+        company: 'Startup Founder',
+        avatar: 'https://randomuser.me/api/portraits/men/46.jpg',
+        specialization: 'backend',
+        tags: ['Node.js', 'React', 'Startup'],
+        exp: 10,
+        guided: 60,
+        rating: 4.9,
+        badges: ['Founder', 'Full Stack'],
+        about: 'I\'ve built and sold two SaaS products. I can help you with the technical and business side of your project.',
+        history: ['YCombinator Alum', 'TechLead'],
+        resources: ['SaaS Boilerplate (Code)'],
+        slots: ['Mon 12pm', 'Wed 12pm']
+    }
+];
+
+function renderMentors(data) {
+    const grid = document.getElementById('mentor-grid-container');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+    data.forEach(mentor => {
+        const card = document.createElement('div');
+        card.className = 'mentor-card fade-in-up visible';
+
+        const tagsHtml = mentor.tags.map(t => `<span class='mentor-tag'>${t}</span>`).join('');
+        const badgesHtml = mentor.badges.map(b => `<span class='badge'>${b}</span>`).join('');
+
+        card.innerHTML = `
+            <img src='${mentor.avatar}' alt='${mentor.name}' class='mentor-avatar'>
+            <h3 class='mentor-name'>${mentor.name}</h3>
+            <p class='mentor-role'>${mentor.role}</p>
+            <div class='mentor-badges'>${badgesHtml}</div>
+            <div class='mentor-stats'>
+                <span class='mentor-stat'><i class='fas fa-briefcase'></i> ${mentor.exp}y Exp</span>
+                <span class='mentor-stat'><i class='fas fa-users'></i> ${mentor.guided} Guided</span>
+                <span class='mentor-stat'><i class='fas fa-star'></i> ${mentor.rating}</span>
+            </div>
+            <div class='mentor-tags'>${tagsHtml}</div>
+            <button class='btn btn-primary' onclick='openMentorModal(${mentor.id})'>Schedule Session</button>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function openMentorModal(id) {
+    const mentor = mentors.find(m => m.id === id);
+    if (!mentor) return;
+
+    const modal = document.getElementById('mentor-modal');
+    const modalBody = document.getElementById('mentor-modal-body');
+
+    const historyHtml = mentor.history.map(h => `<li class='history-item'><span><i class='fas fa-building'></i> ${h}</span></li>`).join('');
+    const resourcesHtml = mentor.resources.map(r => `<li class='resource-item'><i class='fas fa-book'></i> ${r}</li>`).join('');
+    const slotsHtml = mentor.slots.map(s => `<div class='calendar-slot' onclick='alert(\"Session booked for ${s}!\")'>${s}</div>`).join('');
+    const badgesHtml = mentor.badges.map(b => `<span class='badge'>${b}</span>`).join('');
+
+    modalBody.innerHTML = `
+        <span class='close-modal'>&times;</span>
+        <div class='modal-header'>
+            <img src='${mentor.avatar}' alt='${mentor.name}' class='modal-avatar'>
+            <div class='modal-info'>
+                <h2>${mentor.name}</h2>
+                <p class='modal-uni'>${mentor.role} at ${mentor.company}</p>
+                <div class='student-badges'>${badgesHtml}</div>
+            </div>
+        </div>
+        
+        <div class='modal-section'>
+            <h3>About</h3>
+            <p>${mentor.about}</p>
+        </div>
+
+        <div class='modal-section'>
+            <h3>Experience</h3>
+            <ul class='history-list'>${historyHtml}</ul>
+        </div>
+
+        <div class='modal-section'>
+            <h3>Resources</h3>
+            <ul class='resource-list'>${resourcesHtml}</ul>
+        </div>
+
+        <div class='modal-section'>
+            <h3>Available Slots</h3>
+            <div class='calendar-grid'>${slotsHtml}</div>
+        </div>
+        
+        <button class='btn btn-primary btn-block' onclick='alert(\"Request sent to ${mentor.name}!\")'>Request Custom Time</button>
+    `;
+
+    modal.style.display = 'flex';
+
+    // Re-attach close event
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('mentor-grid-container')) {
+        renderMentors(mentors);
+
+        const searchInput = document.getElementById('mentor-search');
+        const specializationSelect = document.getElementById('mentor-specialization');
+
+        function filterMentors() {
+            const term = searchInput.value.toLowerCase();
+            const spec = specializationSelect.value;
+
+            const filtered = mentors.filter(m => {
+                const matchesSearch = m.name.toLowerCase().includes(term) ||
+                    m.role.toLowerCase().includes(term) ||
+                    m.tags.some(t => t.toLowerCase().includes(term));
+                const matchesSpec = spec === 'all' || m.specialization === spec;
+                return matchesSearch && matchesSpec;
+            });
+
+            renderMentors(filtered);
+        }
+
+        searchInput.addEventListener('input', filterMentors);
+        specializationSelect.addEventListener('change', filterMentors);
+
+        // Close Modal on outside click
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('mentor-modal');
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+});
+

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorship | Uni-Connect</title>
+    <meta name="description"
+        content="Connect with industry professionals and mentors to guide your hackathon projects and career.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.jpg" alt="Uni-Connect Logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="project-tools.html" class="nav-link">Tools</a>
+                <a href="#" class="nav-link active">Mentorship</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="login.html" class="btn btn-primary nav-cta">Join Now</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="index.html#features" class="mobile-nav-link">Features</a>
+        <a href="project-tools.html" class="mobile-nav-link">Tools</a>
+        <a href="#" class="mobile-nav-link active">Mentorship</a>
+        <button id="mobile-theme-toggle" class="mobile-theme-toggle">
+            <i class="fas fa-moon"></i> Dark Mode
+        </button>
+        <a href="login.html" class="btn btn-primary mobile-cta">Join Now</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero mentor-hero">
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <h1 class="hero-title">Learn from the <span class="highlight">Best.</span> Build the <span
+                        class="highlight">Future.</span></h1>
+                <p class="hero-subtitle">Get expert guidance for your hackathon projects, career path, and technical
+                    skills from industry professionals.</p>
+                <div class="hero-buttons">
+                    <a href="#mentor-grid" class="btn btn-primary">Book a Session</a>
+                    <a href="#mentor-grid" class="btn btn-secondary">Explore Mentors</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mentor Grid Section -->
+    <section id="mentor-grid" class="mentor-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Meet Our Mentors</h2>
+                <p class="section-subtitle">Industry experts ready to help you level up.</p>
+            </div>
+
+            <!-- Filter Bar (Optional but good for UX) -->
+            <div class="filter-bar fade-in-up">
+                <div class="search-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="mentor-search" placeholder="Search by name, role, or skill...">
+                </div>
+                <div class="filter-group">
+                    <select id="mentor-specialization">
+                        <option value="all">All Specializations</option>
+                        <option value="frontend">Frontend Dev</option>
+                        <option value="backend">Backend Dev</option>
+                        <option value="ai">AI / ML</option>
+                        <option value="design">UI/UX Design</option>
+                        <option value="product">Product Management</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mentor-grid" id="mentor-grid-container">
+                <!-- Mentor cards will be injected here by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Mentorship Section -->
+    <section class="premium-mentorship">
+        <div class="container">
+            <div class="premium-content fade-in-up">
+                <div class="premium-text">
+                    <span class="premium-badge">Premium</span>
+                    <h2>Unlock Dedicated Mentorship</h2>
+                    <p>Building a serious project? Get a dedicated mentor to guide you through the entire hackathon
+                        lifecycle.</p>
+                    <ul class="premium-features">
+                        <li><i class="fas fa-check-circle"></i> Weekly 1-on-1 Code Reviews</li>
+                        <li><i class="fas fa-check-circle"></i> Pitch Deck & Presentation Feedback</li>
+                        <li><i class="fas fa-check-circle"></i> Career Roadmap Coaching</li>
+                        <li><i class="fas fa-check-circle"></i> Direct DM Access</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Unlock Premium Mentorship</a>
+                </div>
+                <div class="premium-image">
+                    <i class="fas fa-crown"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Student Success Stories</h2>
+                <p class="section-subtitle">How mentorship changed their trajectory.</p>
+            </div>
+
+            <div class="testimonial-slider fade-in-up">
+                <div class="testimonial-track" id="mentor-testimonials">
+                    <!-- Testimonials injected here or static -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"My mentor helped me restructure my backend, and we ended up winning
+                            the scalability prize!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Student">
+                            <div>
+                                <h4>James R.</h4>
+                                <span>Backend Developer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The pitch deck feedback was invaluable. We went from a confusing
+                            presentation to a clear winner."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Student">
+                            <div>
+                                <h4>Anita P.</h4>
+                                <span>Product Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I got my first internship thanks to the career roadmap session with
+                            my mentor."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Student">
+                            <div>
+                                <h4>Rahul S.</h4>
+                                <span>Full Stack Dev</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-cta fade-in-up">
+                <h2>Accelerate your career today.</h2>
+                <p>Don't learn alone. Get the guidance you need to succeed.</p>
+                <div class="footer-buttons">
+                    <a href="#mentor-grid" class="btn btn-light">Explore Mentors</a>
+                    <a href="login.html" class="btn btn-secondary-light">Join Uni-Connect</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Uni-Connect. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mentor Modal -->
+    <div id="mentor-modal" class="modal">
+        <div class="modal-content" id="mentor-modal-body">
+            <span class="close-modal">&times;</span>
+            <!-- Content injected by JS -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
