@@ -2620,3 +2620,481 @@ img {
     margin-top: 20px;
 }
 
+
+/* --- Hackathon Hub Page Styles --- */
+
+/* Hero */
+.hackathon-hero {
+    background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%); /* Dynamic exciting gradient */
+    color: var(--white);
+}
+
+.hackathon-hero .hero-title {
+    color: var(--white);
+}
+
+.hackathon-hero .hero-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Filters */
+.filters-section {
+    padding: 30px 0;
+    background: var(--white);
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 70px; /* Below navbar */
+    z-index: 90;
+    box-shadow: var(--shadow-sm);
+}
+
+[data-theme='dark'] .filters-section {
+    background: #1e1e1e;
+    border-color: #333;
+}
+
+.filters-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    min-width: 300px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 1rem;
+    background: var(--light-grey);
+    transition: var(--transition);
+}
+
+.search-box input:focus {
+    background: var(--white);
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+[data-theme='dark'] .search-box input {
+    background: #2a2a2a;
+    border-color: #444;
+    color: var(--text-light);
+}
+
+.filter-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-group select {
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    background: var(--white);
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+[data-theme='dark'] .filter-group select {
+    background: #2a2a2a;
+    border-color: #444;
+    color: var(--text-light);
+}
+
+/* Hackathon Grid */
+.hackathon-grid-section {
+    padding: 60px 0;
+    background: var(--light-grey);
+    min-height: 600px;
+}
+
+.hackathon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.hackathon-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+[data-theme='dark'] .hackathon-card {
+    background: #1e1e1e;
+}
+
+.hackathon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-banner {
+    height: 120px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    position: relative;
+}
+
+.card-logo {
+    width: 60px;
+    height: 60px;
+    background: var(--white);
+    border-radius: 12px;
+    position: absolute;
+    bottom: -30px;
+    left: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.card-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0,0,0,0.6);
+    color: var(--white);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.card-status.open {
+    background: #2ecc71;
+}
+
+.card-content {
+    padding: 40px 20px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.hackathon-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.hackathon-organizer {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.hackathon-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+}
+
+.meta-item i {
+    color: var(--primary-color);
+    margin-right: 5px;
+}
+
+.hackathon-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: #f0f2f5;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+[data-theme='dark'] .tag {
+    background: #333;
+    color: #ccc;
+}
+
+.countdown-timer {
+    background: rgba(0, 74, 173, 0.05);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+[data-theme='dark'] .countdown-timer {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--secondary-color);
+}
+
+.card-footer {
+    margin-top: auto;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* Organizer Section */
+.organizer-section {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.organizer-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+    padding: 50px;
+    border-radius: var(--radius-lg);
+    color: var(--white);
+}
+
+.organizer-text {
+    flex: 1;
+}
+
+.organizer-text h2 {
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.organizer-text p {
+    opacity: 0.9;
+    margin-bottom: 25px;
+}
+
+.feature-list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.feature-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.organizer-image {
+    flex: 0 0 200px;
+    height: 200px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+}
+
+@media (max-width: 768px) {
+    .organizer-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+    
+    .feature-list li {
+        justify-content: center;
+    }
+}
+
+/* Winners Slider */
+.winners-section {
+    padding: 80px 0;
+    background: var(--light-grey);
+}
+
+.winner-card {
+    min-width: 300px;
+    background: var(--white);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    margin-right: 30px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #eee;
+}
+
+[data-theme='dark'] .winner-card {
+    background: #1e1e1e;
+    border-color: #333;
+}
+
+.winner-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.winner-badge {
+    color: #f1c40f;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+/* Modal Specifics */
+.hackathon-modal-content {
+    max-width: 900px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.modal-logo-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.modal-logo-placeholder {
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.modal-header p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.modal-body-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    padding: 30px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+[data-theme='dark'] .modal-body-grid {
+    color: var(--text-light);
+}
+
+.modal-section {
+    margin-bottom: 30px;
+}
+
+.modal-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.sidebar-card {
+    background: var(--light-grey);
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+}
+
+[data-theme='dark'] .sidebar-card {
+    background: #2a2a2a;
+}
+
+.sidebar-card h4 {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.detail-item i {
+    color: var(--primary-color);
+    width: 20px;
+}
+
+@media (max-width: 768px) {
+    .modal-body-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .modal-actions {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+    }
+    
+    .modal-actions button {
+        flex: 1;
+    }
+}
+

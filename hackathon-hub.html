@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Hub | Uni-Connect</title>
+    <meta name="description"
+        content="Discover, register, and compete in the best student hackathons. Find teammates and win big.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.jpg" alt="Uni-Connect Logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="project-tools.html" class="nav-link">Tools</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="connections.html" class="nav-link">Connect</a>
+                <a href="mentorship.html" class="nav-link">Mentorship</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="login.html" class="btn btn-primary nav-cta">Join Now</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="project-tools.html" class="mobile-nav-link">Tools</a>
+        <a href="skills.html" class="mobile-nav-link">Skills</a>
+        <a href="connections.html" class="mobile-nav-link">Connect</a>
+        <a href="mentorship.html" class="mobile-nav-link">Mentorship</a>
+        <button id="mobile-theme-toggle" class="mobile-theme-toggle">
+            <i class="fas fa-moon"></i> Dark Mode
+        </button>
+        <a href="login.html" class="btn btn-primary mobile-cta">Join Now</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero hackathon-hero">
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <h1 class="hero-title">Compete. Create. <span class="highlight">Conquer.</span></h1>
+                <p class="hero-subtitle">Discover the hottest hackathons, build your dream team, and showcase your
+                    skills to the world. Clubs, this is your stage too.</p>
+                <div class="hero-buttons">
+                    <a href="#hackathon-grid" class="btn btn-primary">Register Now</a>
+                    <a href="#organizer-section" class="btn btn-secondary">Host a Hackathon</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container fade-in-up">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="hackathon-search" placeholder="Search hackathons or organizers...">
+                </div>
+                <div class="filter-group">
+                    <select id="filter-domain">
+                        <option value="all">All Domains</option>
+                        <option value="web">Web Dev</option>
+                        <option value="ai">AI/ML</option>
+                        <option value="blockchain">Blockchain</option>
+                        <option value="mobile">Mobile App</option>
+                    </select>
+                    <select id="filter-level">
+                        <option value="all">All Levels</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                    <select id="filter-mode">
+                        <option value="all">All Modes</option>
+                        <option value="online">Online</option>
+                        <option value="offline">Offline</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hackathon Grid -->
+    <section id="hackathon-grid" class="hackathon-grid-section">
+        <div class="container">
+            <div id="hackathon-container" class="hackathon-grid">
+                <!-- Hackathon cards injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizer Promotion Section -->
+    <section id="organizer-section" class="organizer-section">
+        <div class="container">
+            <div class="organizer-content fade-in-up">
+                <div class="organizer-text">
+                    <h2>Host Your Next Hackathon Here</h2>
+                    <p>Reach thousands of student developers, manage registrations effortlessly, and use our
+                        team-matching tools to ensure high participation.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Custom Event Dashboard</li>
+                        <li><i class="fas fa-check-circle"></i> Real-time Analytics</li>
+                        <li><i class="fas fa-check-circle"></i> Automated Team Formation</li>
+                    </ul>
+                    <button class="btn btn-light">Promote Your Hackathon</button>
+                </div>
+                <div class="organizer-image">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Winners Slider -->
+    <section class="winners-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Hall of Fame</h2>
+                <p class="section-subtitle">Celebrating the champions of recent hackathons.</p>
+            </div>
+
+            <div class="testimonial-slider fade-in-up">
+                <div class="slider-container">
+                    <div class="testimonial-track" id="winners-track">
+                        <!-- Winners injected via JS -->
+                    </div>
+                </div>
+                <!-- Reusing slider controls style -->
+                <div class="slider-controls">
+                    <button id="prev-winner"><i class="fas fa-chevron-left"></i></button>
+                    <button id="next-winner"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-cta fade-in-up">
+                <h2>Your next win begins here.</h2>
+                <p>Take the first step towards building something incredible.</p>
+                <div class="footer-buttons">
+                    <a href="#hackathon-grid" class="btn btn-light">Explore Hackathons</a>
+                    <a href="login.html" class="btn btn-outline-light">Join Uni-Connect</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Uni-Connect. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hackathon Details Modal -->
+    <div id="hackathon-modal" class="modal">
+        <div class="modal-content hackathon-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <div class="modal-logo-area">
+                    <div class="modal-logo-placeholder"><i class="fas fa-code"></i></div>
+                    <div>
+                        <h2 id="modal-title">Hackathon Title</h2>
+                        <p id="modal-organizer">Organizer Name</p>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-primary">Register Now</button>
+                    <button class="btn btn-secondary">Find Teammates</button>
+                </div>
+            </div>
+
+            <div class="modal-body-grid">
+                <div class="modal-main">
+                    <section class="modal-section">
+                        <h3><i class="fas fa-bullseye"></i> Problem Statements / Tracks</h3>
+                        <ul id="modal-tracks" class="modal-list">
+                            <!-- Tracks -->
+                        </ul>
+                    </section>
+
+                    <section class="modal-section">
+                        <h3><i class="fas fa-calendar-day"></i> Agenda</h3>
+                        <div id="modal-agenda" class="agenda-timeline">
+                            <!-- Agenda -->
+                        </div>
+                    </section>
+
+                    <section class="modal-section">
+                        <h3><i class="fas fa-gavel"></i> Judging Criteria</h3>
+                        <p id="modal-judging">Innovation, Feasibility, Design, Presentation</p>
+                    </section>
+                </div>
+
+                <div class="modal-sidebar">
+                    <div class="sidebar-card">
+                        <h4>Details</h4>
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <span>Team Size: <strong id="modal-team-size">2-4</strong></span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Mode: <strong id="modal-mode">Online</strong></span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Prizes: <strong id="modal-prizes">$5000</strong></span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Difficulty: <strong id="modal-level">Beginner</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h4>Eligibility</h4>
+                        <ul id="modal-eligibility" class="sidebar-list">
+                            <!-- Eligibility -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -870,3 +870,259 @@ function renderRecommendation(data, container) {
     `;
 }
 
+
+// --- Hackathon Hub Page Logic ---
+
+const hackathonData = [
+    {
+        id: 1,
+        title: 'Global AI Challenge',
+        organizer: 'TechNova Club',
+        date: 'Dec 15 - Dec 17, 2025',
+        mode: 'Online',
+        prize: '$10,000',
+        teamSize: '2-4',
+        level: 'Advanced',
+        domain: 'ai',
+        deadline: '2025-12-10T23:59:59',
+        tags: ['AI/ML', 'Python', 'Cloud'],
+        tracks: ['Healthcare AI', 'FinTech Innovation', 'Sustainable Tech'],
+        agenda: [
+            { time: 'Day 1', event: 'Opening Ceremony & Team Formation' },
+            { time: 'Day 2', event: 'Hacking & Mentorship Sessions' },
+            { time: 'Day 3', event: 'Submission & Demo Day' }
+        ],
+        eligibility: ['Open to all university students', 'Must have valid student ID']
+    },
+    {
+        id: 2,
+        title: 'Web3 Builders Hack',
+        organizer: 'Blockchain Society',
+        date: 'Jan 20 - Jan 22, 2026',
+        mode: 'Offline',
+        prize: '$5,000',
+        teamSize: '3-5',
+        level: 'Intermediate',
+        domain: 'blockchain',
+        deadline: '2026-01-15T23:59:59',
+        tags: ['Blockchain', 'Solidity', 'Web3'],
+        tracks: ['DeFi', 'NFT Utility', 'DAO Tooling'],
+        agenda: [
+            { time: 'Day 1', event: 'Kickoff & Idea Pitching' },
+            { time: 'Day 2', event: 'Coding Sprint' },
+            { time: 'Day 3', event: 'Final Pitches' }
+        ],
+        eligibility: ['Undergraduate students only', 'Physical attendance required']
+    },
+    {
+        id: 3,
+        title: 'Mobile App Sprint',
+        organizer: 'AppDev League',
+        date: 'Feb 05 - Feb 06, 2026',
+        mode: 'Online',
+        prize: '$2,500',
+        teamSize: '1-3',
+        level: 'Beginner',
+        domain: 'mobile',
+        deadline: '2026-02-01T23:59:59',
+        tags: ['Mobile', 'Flutter', 'React Native'],
+        tracks: ['Education', 'Health & Fitness', 'Social Good'],
+        agenda: [
+            { time: 'Day 1', event: 'Workshop & Hacking Starts' },
+            { time: 'Day 2', event: 'Submission & Awards' }
+        ],
+        eligibility: ['Open to beginners', 'No prior experience needed']
+    },
+    {
+        id: 4,
+        title: 'Full Stack Frenzy',
+        organizer: 'CodeWarriors',
+        date: 'Mar 10 - Mar 12, 2026',
+        mode: 'Online',
+        prize: '$7,000',
+        teamSize: '2-4',
+        level: 'Intermediate',
+        domain: 'web',
+        deadline: '2026-03-05T23:59:59',
+        tags: ['Web Dev', 'MERN', 'SaaS'],
+        tracks: ['E-commerce', 'Productivity Tools', 'Entertainment'],
+        agenda: [
+            { time: 'Day 1', event: 'Opening' },
+            { time: 'Day 2', event: 'Mid-eval' },
+            { time: 'Day 3', event: 'Final Demo' }
+        ],
+        eligibility: ['Open to all students']
+    }
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+    const hackathonContainer = document.getElementById('hackathon-container');
+    const searchInput = document.getElementById('hackathon-search');
+    const filterDomain = document.getElementById('filter-domain');
+    const filterLevel = document.getElementById('filter-level');
+    const filterMode = document.getElementById('filter-mode');
+
+    if (hackathonContainer) {
+        renderHackathons(hackathonData);
+
+        // Filter Event Listeners
+        const filterHackathons = () => {
+            const term = searchInput.value.toLowerCase();
+            const domain = filterDomain.value;
+            const level = filterLevel.value.toLowerCase();
+            const mode = filterMode.value.toLowerCase();
+
+            const filtered = hackathonData.filter(h => {
+                const matchesSearch = h.title.toLowerCase().includes(term) || h.organizer.toLowerCase().includes(term);
+                const matchesDomain = domain === 'all' || h.domain === domain;
+                const matchesLevel = level === 'all' || h.level.toLowerCase() === level;
+                const matchesMode = mode === 'all' || h.mode.toLowerCase() === mode;
+
+                return matchesSearch && matchesDomain && matchesLevel && matchesMode;
+            });
+
+            renderHackathons(filtered);
+        };
+
+        searchInput.addEventListener('input', filterHackathons);
+        filterDomain.addEventListener('change', filterHackathons);
+        filterLevel.addEventListener('change', filterHackathons);
+        filterMode.addEventListener('change', filterHackathons);
+
+        // Start Countdown Timer Interval
+        setInterval(updateCountdowns, 1000);
+    }
+
+    // Winners Slider Logic
+    const winnersTrack = document.getElementById('winners-track');
+    if (winnersTrack) {
+        const winners = [
+            { name: 'Team Nova', project: 'AI Health Assistant', badge: '1st Place', avatar: '#3498db' },
+            { name: 'Pixel Pioneers', project: 'EduVR Platform', badge: '2nd Place', avatar: '#e74c3c' },
+            { name: 'Code Crushers', project: 'EcoTrack App', badge: 'Best UI', avatar: '#2ecc71' },
+            { name: 'BlockBusters', project: 'DeFi Wallet', badge: 'Best Tech', avatar: '#9b59b6' }
+        ];
+
+        winnersTrack.innerHTML = winners.map(w => `
+            <div class='winner-card'>
+                <div class='winner-avatar' style='background: ${w.avatar}'>
+                    <i class='fas fa-trophy'></i>
+                </div>
+                <div class='winner-badge'>${w.badge}</div>
+                <h3>${w.name}</h3>
+                <p>${w.project}</p>
+            </div>
+        `).join('');
+
+        // Simple auto-slide
+        let currentIndex = 0;
+        const cards = winnersTrack.children;
+        const totalCards = cards.length;
+
+        setInterval(() => {
+            if (window.innerWidth > 768) return; // Disable on desktop if grid is better, or adjust logic
+            currentIndex = (currentIndex + 1) % totalCards;
+            const cardWidth = cards[0].offsetWidth + 30;
+            winnersTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        }, 4000);
+    }
+});
+
+function renderHackathons(data) {
+    const container = document.getElementById('hackathon-container');
+    if (!container) return;
+
+    container.innerHTML = data.map(h => `
+        <div class='hackathon-card fade-in-up visible' onclick='openHackathonModal(${h.id})'>
+            <div class='card-banner'>
+                <div class='card-status open'>Registration Open</div>
+                <div class='card-logo'><i class='fas fa-code'></i></div>
+            </div>
+            <div class='card-content'>
+                <h3 class='hackathon-title'>${h.title}</h3>
+                <p class='hackathon-organizer'>by ${h.organizer}</p>
+                
+                <div class='hackathon-meta'>
+                    <span class='meta-item'><i class='fas fa-calendar'></i> ${h.date.split(' - ')[0]}</span>
+                    <span class='meta-item'><i class='fas fa-map-marker-alt'></i> ${h.mode}</span>
+                </div>
+
+                <div class='hackathon-tags'>
+                    ${h.tags.map(t => `<span class='tag'>${t}</span>`).join('')}
+                </div>
+
+                <div class='countdown-timer' data-deadline='${h.deadline}'>
+                    Loading timer...
+                </div>
+
+                <div class='card-footer'>
+                    <button class='btn btn-primary btn-block'>View Details</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    updateCountdowns();
+}
+
+function updateCountdowns() {
+    const timers = document.querySelectorAll('.countdown-timer');
+    timers.forEach(timer => {
+        const deadline = new Date(timer.getAttribute('data-deadline')).getTime();
+        const now = new Date().getTime();
+        const distance = deadline - now;
+
+        if (distance < 0) {
+            timer.innerHTML = "Registration Closed";
+            timer.style.color = "red";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        timer.innerHTML = `Ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    });
+}
+
+function openHackathonModal(id) {
+    const hackathon = hackathonData.find(h => h.id === id);
+    if (!hackathon) return;
+
+    const modal = document.getElementById('hackathon-modal');
+
+    // Populate Modal
+    document.getElementById('modal-title').innerText = hackathon.title;
+    document.getElementById('modal-organizer').innerText = hackathon.organizer;
+    document.getElementById('modal-team-size').innerText = hackathon.teamSize;
+    document.getElementById('modal-mode').innerText = hackathon.mode;
+    document.getElementById('modal-prizes').innerText = hackathon.prize;
+    document.getElementById('modal-level').innerText = hackathon.level;
+
+    // Tracks
+    const tracksList = document.getElementById('modal-tracks');
+    tracksList.innerHTML = hackathon.tracks.map(t => `<li>${t}</li>`).join('');
+
+    // Agenda
+    const agendaDiv = document.getElementById('modal-agenda');
+    agendaDiv.innerHTML = hackathon.agenda.map(a => `
+        <div class='agenda-item'>
+            <strong>${a.time}:</strong> ${a.event}
+        </div>
+    `).join('');
+
+    // Eligibility
+    const eligibilityList = document.getElementById('modal-eligibility');
+    eligibilityList.innerHTML = hackathon.eligibility.map(e => `<li><i class='fas fa-check'></i> ${e}</li>`).join('');
+
+    modal.style.display = 'block';
+
+    // Close logic
+    const closeBtn = modal.querySelector('.close-modal');
+    closeBtn.onclick = () => modal.style.display = 'none';
+    window.onclick = (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    };
+}
