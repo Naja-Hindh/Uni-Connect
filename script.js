@@ -718,3 +718,155 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+// --- Skills & Guidance Page Logic ---
+
+const skillData = {
+    'html-css': {
+        title: 'Frontend Fundamentals',
+        level: 'Beginner',
+        nextSteps: ['JavaScript (ES6+)', 'Responsive Design', 'CSS Frameworks (Tailwind, Bootstrap)'],
+        projects: ['Personal Portfolio Website', 'Landing Page Clone', 'Interactive Form'],
+        resources: ['MDN Web Docs', 'CSS-Tricks', 'FreeCodeCamp']
+    },
+    'javascript': {
+        title: 'Frontend Logic Master',
+        level: 'Intermediate',
+        nextSteps: ['React or Vue.js', 'API Integration (Fetch/Axios)', 'State Management'],
+        projects: ['Weather App', 'To-Do List with LocalStorage', 'Currency Converter'],
+        resources: ['JavaScript.info', 'Eloquent JavaScript', 'You Don\'t Know JS']
+    },
+    'react': {
+        title: 'Modern Frontend Dev',
+        level: 'Advanced',
+        nextSteps: ['Next.js', 'Redux/Context API', 'Testing (Jest/RTL)'],
+        projects: ['E-commerce Dashboard', 'Social Media Feed', 'Real-time Chat App'],
+        resources: ['React Documentation', 'Overreacted.io', 'Frontend Masters']
+    },
+    'python': {
+        title: 'Python Scripter',
+        level: 'Beginner/Intermediate',
+        nextSteps: ['Data Structures & Algo', 'Web Frameworks (Flask/Django)', 'Data Science Libs (Pandas)'],
+        projects: ['Web Scraper', 'Discord Bot', 'Blog Backend'],
+        resources: ['Real Python', 'Automate the Boring Stuff', 'LeetCode']
+    },
+    'java': {
+        title: 'Java Developer',
+        level: 'Intermediate',
+        nextSteps: ['Spring Boot', 'Database Design (SQL)', 'Microservices'],
+        projects: ['Library Management System', 'Banking App API', 'Android App'],
+        resources: ['Baeldung', 'Spring Guides', 'Effective Java']
+    },
+    'node': {
+        title: 'Backend Engineer',
+        level: 'Advanced',
+        nextSteps: ['Database (MongoDB/Postgres)', 'Authentication (JWT)', 'Cloud Deployment (AWS)'],
+        projects: ['REST API for Blog', 'Real-time Multiplayer Game', 'Authentication Service'],
+        resources: ['Node.js Docs', 'Express.js Guide', 'DigitalOcean Tutorials']
+    },
+    'design': {
+        title: 'UI/UX Designer',
+        level: 'All Levels',
+        nextSteps: ['Figma Prototyping', 'Design Systems', 'User Research'],
+        projects: ['Mobile App Redesign', 'Design System Kit', 'Case Study Portfolio'],
+        resources: ['Nielsen Norman Group', 'Dribbble', 'Figma Community']
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const getRoadmapBtn = document.getElementById('get-recommendations-btn');
+    const skillSelect = document.getElementById('skill-select');
+    const resultContainer = document.getElementById('recommendation-result');
+
+    if (getRoadmapBtn && skillSelect && resultContainer) {
+        getRoadmapBtn.addEventListener('click', () => {
+            const selectedSkill = skillSelect.value;
+            if (!selectedSkill) {
+                alert('Please select a skill first!');
+                return;
+            }
+
+            const data = skillData[selectedSkill];
+            if (data) {
+                renderRecommendation(data, resultContainer);
+            }
+        });
+    }
+
+    // Reuse Testimonial Slider Logic for Skills Page if needed
+    const skillsTrack = document.getElementById('skills-testimonial-track');
+    if (skillsTrack) {
+        const testimonials = [
+            {
+                text: 'The roadmap helped me go from knowing just HTML to building a full React app in 2 weeks!',
+                author: 'Alex Johnson',
+                role: 'Hackathon Winner'
+            },
+            {
+                text: 'I used the pitch deck template and we won Best Pitch at HackMIT. Highly recommend!',
+                author: 'Sarah Lee',
+                role: 'Student Developer'
+            },
+            {
+                text: 'Clear, concise, and actionable. Exactly what I needed to level up my backend skills.',
+                author: 'Mike Chen',
+                role: 'Backend Lead'
+            }
+        ];
+
+        skillsTrack.innerHTML = testimonials.map(t => `
+            <div class='testimonial-card'>
+                <p class='testimonial-text'>\"${t.text}\"</p>
+                <div class='testimonial-author'>
+                    <div class='author-info'>
+                        <h4>${t.author}</h4>
+                        <p>${t.role}</p>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        let currentIndex = 0;
+        const cards = skillsTrack.children;
+        const totalCards = cards.length;
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalCards;
+            const cardWidth = cards[0].offsetWidth + 30; // width + gap
+            skillsTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        }, 5000);
+    }
+});
+
+function renderRecommendation(data, container) {
+    container.innerHTML = `
+        <div class='rec-card fade-in-up visible'>
+            <div class='rec-header'>
+                <h3 class='rec-title'>${data.title}</h3>
+                <span class='rec-level'>${data.level}</span>
+            </div>
+            
+            <div class='rec-section'>
+                <h4><i class='fas fa-arrow-right'></i> Next Steps to Learn</h4>
+                <div class='rec-tags'>
+                    ${data.nextSteps.map(step => `<span class='rec-tag'>${step}</span>`).join('')}
+                </div>
+            </div>
+
+            <div class='rec-section'>
+                <h4><i class='fas fa-laptop-code'></i> Project Ideas</h4>
+                <ul class='rec-list'>
+                    ${data.projects.map(proj => `<li>${proj}</li>`).join('')}
+                </ul>
+            </div>
+
+            <div class='rec-section'>
+                <h4><i class='fas fa-book-open'></i> Recommended Resources</h4>
+                <ul class='rec-list'>
+                    ${data.resources.map(res => `<li>${res}</li>`).join('')}
+                </ul>
+            </div>
+        </div>
+    `;
+}
+

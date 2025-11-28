@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills & Guidance | Uni-Connect</title>
+    <meta name="description"
+        content="Get personalized skill recommendations and pitch deck guidance to win your next hackathon.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.jpg" alt="Uni-Connect Logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="project-tools.html" class="nav-link">Tools</a>
+                <a href="connections.html" class="nav-link">Connect</a>
+                <a href="mentorship.html" class="nav-link">Mentorship</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="login.html" class="btn btn-primary nav-cta">Join Now</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="project-tools.html" class="mobile-nav-link">Tools</a>
+        <a href="connections.html" class="mobile-nav-link">Connect</a>
+        <a href="mentorship.html" class="mobile-nav-link">Mentorship</a>
+        <button id="mobile-theme-toggle" class="mobile-theme-toggle">
+            <i class="fas fa-moon"></i> Dark Mode
+        </button>
+        <a href="login.html" class="btn btn-primary mobile-cta">Join Now</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero skills-hero">
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <h1 class="hero-title">Learn Smarter. <span class="highlight">Build Better.</span> Pitch Perfect.</h1>
+                <p class="hero-subtitle">Your personalized roadmap to mastering new skills and creating winning
+                    hackathon pitches.</p>
+                <div class="hero-buttons">
+                    <a href="#skill-recommender" class="btn btn-primary">Get Skill Roadmap</a>
+                    <a href="#pitch-guidance" class="btn btn-secondary">Pitch Deck Simulator</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill Recommendation Section -->
+    <section id="skill-recommender" class="skill-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">What do you want to learn?</h2>
+                <p class="section-subtitle">Select your current skills or interests to get a tailored roadmap.</p>
+            </div>
+
+            <div class="skill-input-area fade-in-up">
+                <div class="input-group">
+                    <select id="skill-select" class="skill-select">
+                        <option value="" disabled selected>Select a skill...</option>
+                        <option value="html-css">HTML & CSS</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="react">React</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="node">Node.js</option>
+                        <option value="design">UI/UX Design</option>
+                    </select>
+                    <button id="get-recommendations-btn" class="btn btn-primary">Get Roadmap</button>
+                </div>
+            </div>
+
+            <div id="recommendation-result" class="recommendation-result">
+                <!-- Results will be injected here via JS -->
+                <div class="placeholder-text">Select a skill above to see your path!</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Roadmap Section -->
+    <section class="roadmap-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Your Developer Journey</h2>
+                <p class="section-subtitle">From beginner to hackathon winner.</p>
+            </div>
+
+            <div class="roadmap-timeline fade-in-up">
+                <div class="roadmap-item">
+                    <div class="roadmap-icon"><i class="fas fa-seedling"></i></div>
+                    <div class="roadmap-content">
+                        <h3>The Basics</h3>
+                        <p>Master syntax, logic, and core concepts. Build small scripts.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon"><i class="fas fa-hammer"></i></div>
+                    <div class="roadmap-content">
+                        <h3>First Projects</h3>
+                        <p>Build a portfolio site, a to-do app, or a simple game.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon"><i class="fas fa-layer-group"></i></div>
+                    <div class="roadmap-content">
+                        <h3>Specialization</h3>
+                        <p>Dive deep into Frontend, Backend, AI, or Mobile Dev.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="roadmap-content">
+                        <h3>Hackathon Ready</h3>
+                        <p>Collaborate, build MVPs under pressure, and pitch your ideas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pitch Deck Guidance Section -->
+    <section id="pitch-guidance" class="pitch-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Master the Perfect Pitch</h2>
+                <p class="section-subtitle">Every great project needs a great story. Follow these steps.</p>
+            </div>
+
+            <div class="pitch-grid">
+                <div class="pitch-card fade-in-up">
+                    <div class="pitch-step">1</div>
+                    <h3>Problem Statement</h3>
+                    <p>Clearly define the pain point you are solving. Use data if possible.</p>
+                    <button class="btn-text">Learn More</button>
+                </div>
+                <div class="pitch-card fade-in-up">
+                    <div class="pitch-step">2</div>
+                    <h3>The Solution</h3>
+                    <p>Explain your product and how it directly addresses the problem.</p>
+                    <button class="btn-text">Learn More</button>
+                </div>
+                <div class="pitch-card fade-in-up">
+                    <div class="pitch-step">3</div>
+                    <h3>Target Audience</h3>
+                    <p>Who is this for? Be specific about your user persona.</p>
+                    <button class="btn-text">Learn More</button>
+                </div>
+                <div class="pitch-card fade-in-up">
+                    <div class="pitch-step">4</div>
+                    <h3>Tech Stack</h3>
+                    <p>Showcase the technologies used. Mention any "secret sauce".</p>
+                    <button class="btn-text">Learn More</button>
+                </div>
+                <div class="pitch-card fade-in-up">
+                    <div class="pitch-step">5</div>
+                    <h3>Business Model</h3>
+                    <p>How will it make money or sustain itself? (Freemium, Ads, SaaS)</p>
+                    <button class="btn-text">Learn More</button>
+                </div>
+                <div class="pitch-card fade-in-up">
+                    <div class="pitch-step">6</div>
+                    <h3>Future Roadmap</h3>
+                    <p>What's next? Show ambition and long-term vision.</p>
+                    <button class="btn-text">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloads Section -->
+    <section class="downloads-section">
+        <div class="container">
+            <div class="download-box fade-in-up">
+                <h2>Ready to Pitch?</h2>
+                <p>Get our proven templates and checklists to ensure you don't miss a thing.</p>
+                <div class="download-buttons">
+                    <button class="btn btn-light"><i class="fas fa-file-powerpoint"></i> Download Pitch
+                        Template</button>
+                    <button class="btn btn-outline-light"><i class="fas fa-check-square"></i> Download
+                        Checklist</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Student Success Stories</h2>
+                <p class="section-subtitle">See how others used these roadmaps to win.</p>
+            </div>
+
+            <div class="testimonial-slider fade-in-up">
+                <div class="slider-container">
+                    <div class="testimonial-track" id="skills-testimonial-track">
+                        <!-- Testimonials injected via JS -->
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button id="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-cta fade-in-up">
+                <h2>Don't just learn. Build.</h2>
+                <p>Start your journey today and turn your ideas into reality.</p>
+                <div class="footer-buttons">
+                    <a href="#skill-recommender" class="btn btn-light">Get Roadmap</a>
+                    <a href="#pitch-guidance" class="btn btn-outline-light">Start Pitch Deck</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Uni-Connect. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
